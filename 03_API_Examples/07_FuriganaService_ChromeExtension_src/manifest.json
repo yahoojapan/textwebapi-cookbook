@@ -1,0 +1,12 @@
+{
+    "name": "Furitasi - Add Furigana to Japanese text",
+    "description": "Web API Sample Program",
+    "version": "1.0",
+    "manifest_version": 3,
+    "content_scripts": [
+        {
+            "matches": ["https://*.yahoo.co.jp/*"],
+            "js": ["content-script.js"]
+        }
+    ]
+}

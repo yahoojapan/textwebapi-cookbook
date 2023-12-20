@@ -1,0 +1,25 @@
+<html lang="ja">
+  <head>
+    <script>
+      async function postRequest(query) {
+          const url = 'https://jlp.yahooapis.jp/MAService/V2/parse?appid=あなたの Client ID（アプリケーション ID）';
+          const response = await fetch(url, {
+              method: 'POST',
+              mode: 'cors',
+              body: JSON.stringify({
+                  "id": "A123",
+                  "jsonrpc" : "2.0",
+                  "method": 'jlp.maservice.parse',
+                  "params" : { "q" : query }
+              }),
+          });
+          return await response.json();
+      }
+      async function main(query) {
+          const response = await postRequest(query)
+          document.write(response['result']['tokens'].map(x => [x[0], x[3]]))
+      }
+    </script>
+  </head>
+  <body onload="main('今日は良い天気です。')" />
+</html>
