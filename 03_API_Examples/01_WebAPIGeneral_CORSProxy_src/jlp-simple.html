@@ -13,7 +13,8 @@
           const m = cs[1].match(/^((.)(.+))service$/);
           if (m[1].length <= 3) cs[1] = m[1].toUpperCase();
           else cs[1] = m[2].toUpperCase() + m[3];
-          return 'https://jlp.yahooapis.jp/' + cs[1] + 'Service/V2/' + cs[2];
+          const version = cs[1].startsWith("NER") ? 1 :2;
+          return url = `https://jlp.yahooapis.jp/${cs[1]}Service/V${version}/${cs[2]}`
       }
       function analyze() {
           const request = document.querySelector("#input-json").value;
