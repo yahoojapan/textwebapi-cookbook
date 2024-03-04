@@ -71,7 +71,7 @@ def generate_model(corpus: list[str]):
     return markov_model
 ```
 
-（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-id%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id)をご覧ください。
+（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-idアプリケーション-id)をご覧ください。
 
 次に実際にコーパスを用意してマルコフモデルを作成してみます。作成したマルコフモデルを使って、文を3回生成してみましょう。
 

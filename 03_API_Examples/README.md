@@ -25,7 +25,8 @@
 - [3.21　`校正支援` 校正支援の指摘対象の文字列を置換先候補に置き換える方法](./06_KouseiService_Replace.md)
 - [3.22　`ルビ振り` ブラウザで選択したテキストにルビを振る Chrome 拡張機能](./07_FuriganaService_ChromeExtension.md)
 - [3.23　`ルビ振り` テキストの難易度判定](./07_FuriganaService_SentenceLevel.md)
-- [3.24　`ルビ振り, かな漢字変換` ルビ振り・かな漢字変換を用いたクエリ拡張](./08_FuriganaServiceJIMService_QueryExpansion.ipynb) 
+- [3.24　`ルビ振り, かな漢字変換` ルビ振り・かな漢字変換を用いたクエリ拡張](./08_FuriganaServiceJIMService_QueryExpansion.ipynb)
+- [3.25　`固有表現抽出` テキスト中の固有表現に自動でハイパーリンクを張る](./09_NERService_CORSDemo.md)  
 
 ## 著者一覧
 

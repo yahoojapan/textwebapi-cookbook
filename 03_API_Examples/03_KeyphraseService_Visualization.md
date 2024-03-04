@@ -65,7 +65,7 @@ def visualize_keyphrase(text: str) -> None:
     display(HTML(display_text))
 ```
 
-（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-id%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id)をご覧ください。
+（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-idアプリケーション-id)をご覧ください。
 
 
 次に、実装した関数を用いて、以下の文章を視覚的に表現してみましょう。この文章はLINEヤフー株式会社の[プレスリリース](https://www.lycorp.co.jp/ja/news/release/000853/)から取り出した一例です。ご自身の状況に合わせて文章を変更して、試してみてください。

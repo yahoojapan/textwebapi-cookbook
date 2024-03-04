@@ -133,7 +133,7 @@ https://jlp.yahooapis.jp/NERService/V1/extract \
 }' | jq -c  '.result.entityList[]'
 ```
 
-（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-id%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id)をご覧ください。
+（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-idアプリケーション-id)をご覧ください。
 
 実行結果（jq で results/entityList のみを取り出しています）:
 
@@ -233,4 +233,4 @@ TIME 2
 
 ## こちらの機能の活用事例
 
-- （今後追加予定）
+- [テキスト中の固有表現に自動でハイパーリンクを張る](../03_API_Examples/09_NERService_CORSDemo.md)

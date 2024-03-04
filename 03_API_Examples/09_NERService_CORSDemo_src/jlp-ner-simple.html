@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テキスト解析 Web API 固有表現抽出デモ</title>
+    <style>
+      * { box-sizing: border-box; }
+      textarea, div { width: 100%; margin-top: 1rem; padding: 0.5rem; font-size: 1rem; }
+      #view { border: dashed 2px gray; }
+    </style>
+    <script>
+      const ClientID = 'あなたの Client ID（アプリケーション ID）';
+
+      async function yapiner(query) {
+          const url = "https://jlp.yahooapis.jp/NERService/V1/extract?appid=" + encodeURIComponent(ClientID);
+          const res = await fetch(url, {
+              method: 'POST',
+              mode: 'cors',
+              body: JSON.stringify({
+                  "id": "A123",
+                  "jsonrpc" : "2.0",
+                  "method" : "jlp.nerservice.extract",
+                  "params" : { "q" : query }
+              }),
+          });
+          return res.json();
+      }
+      async function do_henkan() {
+          document.querySelector("#view").innerHTML = '';
+          const text = document.querySelector("#input-text").value;
+          const obj = await yapiner(text);
+          if (! obj?.result?.entityList) return;
+          make_view(text, obj);
+      }
+      function make_view(text, obj) {
+          [...obj.result.entityList].reverse().forEach(s => {
+              const pre = text.substring(0, parseInt(s.offset));
+              const post = text.substring(parseInt(s.offset) + parseInt(s.length));
+              if (! /^(ORGANIZATION|PERSON|LOCATION|ARTIFACT)$/.test(s.type)) return;
+              const url = (/^LOCATION$/.test(s.type) ? 
+                           'https://map.yahoo.co.jp/search?q=' : 
+                           'https://ja.wikipedia.org/w/index.php?search=')
+                    + encodeURIComponent(s.text);
+              text = `${pre}<a target="_blank" href="${url}">${s.text}</a>${post}`;
+          });
+          document.querySelector("#view").innerHTML = text.replaceAll('\n', '<br>\n');
+      }
+    </script>
+  </head>
+  <body>
+    <h1>テキスト解析 Web API 固有表現抽出デモ</h1>
+    <textarea id="input-text" placeholder="入力エリア"></textarea>
+    <button onclick="do_henkan()">実行</button>
+    <div id="view">出力エリア</div>
+
+    <div style="text-align: right">
+      <!-- Begin Yahoo! JAPAN Web Services Attribution Snippet -->
+      <span style="margin:15px 15px 15px 15px"><a href="https://developer.yahoo.co.jp/sitemap/">Web Services by Yahoo! JAPAN</a></span>
+      <!-- End Yahoo! JAPAN Web Services Attribution Snippet -->
+    </div>
+  </body>
+</html>

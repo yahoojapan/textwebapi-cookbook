@@ -141,7 +141,7 @@ https://jlp.yahooapis.jp/FuriganaService/V2/furigana \
 }' | jq -c '.result.word[] | del(.subword)'
 ```
 
-（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-id%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id)をご覧ください。
+（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-idアプリケーション-id)をご覧ください。
 
 実行結果（jq で results/word のみを取り出しています（subword は非表示））:
 

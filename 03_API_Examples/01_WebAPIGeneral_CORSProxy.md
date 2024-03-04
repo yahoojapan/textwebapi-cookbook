@@ -47,7 +47,7 @@
 </html>
 ```
 
-（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-id%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id)をご覧ください。
+（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-idアプリケーション-id)をご覧ください。
 
 ローカルに HTML ファイルを作成し（ファイル名は `jlp-simple.html` など）、上記内容を入力し、ウェブブラウザで開きます（[github にファイルあります](01_WebAPIGeneral_CORSProxy_src/jlp-simple.html)）。
 そして、「入力 JSON」の箇所に

@@ -98,7 +98,7 @@ done
 export APPID='あなたの Client ID（アプリケーション ID）'
 ```
 
-（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-id%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id)をご覧ください。
+（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-idアプリケーション-id)をご覧ください。
 
 コマンドライン引数に解析対象テキストを与え、実行すると下記のような結果になります。
 

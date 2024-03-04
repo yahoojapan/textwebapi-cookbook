@@ -38,7 +38,7 @@ def keyphrase_service(query):
 keyphrase_service('そういえば夏休みに東京タワーに行ったのを思い出しました')
 ```
 
-（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-id%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id)をご覧ください。
+（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-idアプリケーション-id)をご覧ください。
 
 動作テストの結果は下記になります。「夏休み」と「東京タワー」が取れています。
 

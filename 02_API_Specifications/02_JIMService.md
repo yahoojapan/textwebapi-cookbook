@@ -168,7 +168,7 @@ https://jlp.yahooapis.jp/JIMService/V2/conversion \
 }' | jq -r '[.result.segment[].candidate[0]] | join("")'
 ```
 
-（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-id%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3id)をご覧ください。
+（※）Client ID については[こちら](../02_API_Specifications/00_Overview.md#client-idアプリケーション-id)をご覧ください。
 
 実行結果（jq でかな漢字変換の変換候補の一番目を取り出しています）:
 
