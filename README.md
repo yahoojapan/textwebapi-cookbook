@@ -13,6 +13,7 @@ Yahoo!デベロッパーネットワークの「[テキスト解析 Web API](htt
   - [日本語係り受け解析](https://developer.yahoo.co.jp/webapi/jlp/da/v2/parse.html)
   - [キーフレーズ抽出](https://developer.yahoo.co.jp/webapi/jlp/keyphrase/v2/extract.html)
   - [自然言語理解](https://developer.yahoo.co.jp/webapi/jlp/nlu/v2/index.html)
+  - [固有表現抽出](https://developer.yahoo.co.jp/webapi/jlp/ner/v1/index.html)
 
 ## 目次
 
