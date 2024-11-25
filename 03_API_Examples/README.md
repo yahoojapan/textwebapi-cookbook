@@ -27,6 +27,8 @@
 - [3.23　`ルビ振り` テキストの難易度判定](./07_FuriganaService_SentenceLevel.md)
 - [3.24　`ルビ振り, かな漢字変換` ルビ振り・かな漢字変換を用いたクエリ拡張](./08_FuriganaServiceJIMService_QueryExpansion.ipynb)
 - [3.25　`固有表現抽出` テキスト中の固有表現に自動でハイパーリンクを張る](./09_NERService_CORSDemo.md)  
+- [3.26　`固有表現抽出` テキストの固有表現マスキング](./09_NERService_Masking.md) 
+- [3.27　`固有表現抽出` プロフィールダイアグラムの作成](./09_NERService_ProfileDiagram.md)   
 
 ## 著者一覧
 
@@ -38,5 +40,5 @@
 - 西山 育宏（言語処理エンジニア）
 - 平子 潤（言語処理エンジニア）
 - 牧野 恵（言語処理エンジニア）
-
+- 舌 達也（言語処理エンジニア）
 

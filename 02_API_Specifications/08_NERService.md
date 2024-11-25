@@ -234,3 +234,5 @@ TIME 2
 ## こちらの機能の活用事例
 
 - [テキスト中の固有表現に自動でハイパーリンクを張る](../03_API_Examples/09_NERService_CORSDemo.md)
+- [テキストの固有表現マスキング](../03_API_Examples/09_NERService_Masking.md)
+- [プロフィールダイアグラムの作成](../03_API_Examples/09_NERService_ProfileDiagram.md) 

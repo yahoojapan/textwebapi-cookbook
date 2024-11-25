@@ -55,6 +55,8 @@ Yahoo!デベロッパーネットワークの「[テキスト解析 Web API](htt
   - [3.23　`ルビ振り` テキストの難易度判定](./03_API_Examples/07_FuriganaService_SentenceLevel.md)
   - [3.24　`ルビ振り, かな漢字変換` ルビ振り・かな漢字変換を用いたクエリ拡張](./03_API_Examples/08_FuriganaServiceJIMService_QueryExpansion.ipynb)
   - [3.25　`固有表現抽出` テキスト中の固有表現に自動でハイパーリンクを張る](./03_API_Examples/09_NERService_CORSDemo.md) 
+  - [3.26　`固有表現抽出` テキストの固有表現マスキング](./03_API_Examples/09_NERService_Masking.md) 
+  - [3.27　`固有表現抽出` プロフィールダイアグラムの作成](./03_API_Examples/09_NERService_ProfileDiagram.md)   
 
 ## Copyright / License
 
