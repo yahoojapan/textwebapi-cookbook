@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Y!API NLP demo forms</title>
+    <style>
+      * { box-sizing: border-box; }
+      .section { margin-top: 1rem; }
+      .section p { margin: 0.2rem 0; }
+      .section textarea { width: 100%; height: 15em; font-size: 1rem; }
+      input[type="text"] { width: 100%; font-size: 1rem; margin-bottom: 0.5em; }
+    </style>
+  </head>
+  <body>
+    <h1>Y!API NLP demo forms</h1>
+
+    <div class="section">
+      「<a target="_blank" href="https://developer.yahoo.co.jp/webapi/jlp/">テキスト解析 - Yahoo!デベロッパーネットワーク</a>」のデモです。
+      <br>
+      入力は JSON、解析結果も JSON です。
+      <br>
+      動作確認にご利用ください。
+    </div>
+
+    <div class="section">
+
+      <input type="text" id="client-id" placeholder="ClientID を入力してください">
+      <textarea id="input-json" placeholder="入力 JSON"></textarea>
+
+      <select id="sel-sample">
+        <option value="">リクエストサンプル</option>
+        <option value="MA">日本語形態素解析</option>
+        <option value="JIM">かな漢字変換</option>
+        <option value="Furigana">ルビ振り</option>
+        <option value="Kousei">校正支援</option>
+        <option value="DA">日本語係り受け解析</option>
+        <option value="Keyphrase">キーフレーズ抽出</option>
+        <option value="NLU">自然言語理解</option>
+        <option value="NER">固有表現抽出</option>
+      </select>
+      <p>&darr;</p>
+      <button onclick="dodo()">解析</button>
+      <input type="checkbox" id="prity" checked><label for="prity">整形</label>
+      <p>&darr;</p>
+      <textarea id="output-json" placeholder="解析結果 JSON"></textarea>
+    </div>
+
+    <script>
+      let end_point = '';
+
+      document.getElementById('sel-sample').addEventListener('change', e => {
+          if (e.currentTarget.value) {
+              document.querySelector("#input-json").value = JSON.stringify(sample_req[e.currentTarget.value], null, 4);
+              const url = method2url(sample_req[e.currentTarget.value]['method']);
+              end_point = url;
+          }
+      });
+      document.getElementById('prity').addEventListener('change', () => dodo());
+
+      function method2url(method) {
+          let cs = method.split('.');
+          let m = cs[1].match(/^((.)(.+))service$/);
+          if (m[1].length <= 3) cs[1] = m[1].toUpperCase();
+          else cs[1] = m[2].toUpperCase() + m[3];
+          const version = cs[1].startsWith('NER') ? 1 : 2;
+          return `https://jlp.yahooapis.jp/${cs[1]}Service/V${version}/${cs[2]}`;
+      }
+
+      async function post_jlp(url, request) {
+          return await fetch(url, {
+              method: 'POST',
+              body: request,
+              mode: 'cors'
+          }).then(res => res.json()).catch(console.error);
+      }
+
+      async function dodo() {
+          const req = document.querySelector("#input-json").value;
+          try {
+              let json = JSON.parse(req);
+              end_point = method2url(json['method']);
+          } catch(e) {
+              alert("JSON が不正です: " + e.message);
+              return;
+          }
+
+          const ClientID = document.querySelector("#client-id").value.trim();
+          if (!ClientID) {
+              alert("ClientID を入力してください。");
+              return;
+          }
+
+          const url = end_point + "?appid=" + encodeURIComponent(ClientID);
+          console.log(url);
+
+          const obj = await post_jlp(url, req);
+          console.log(obj);
+
+          document.querySelector("#output-json").value = "";
+          if (obj) {
+              const indent = document.getElementById('prity').checked ? 4 : 0;
+              document.querySelector("#output-json").value = JSON.stringify(obj, null, indent);
+          }
+      }
+
+      const sample_req = {
+          'MA' : {
+              "id": "A123",
+              "jsonrpc" : "2.0",
+              "method" : "jlp.maservice.parse",
+              "params" : {
+                  "q" : "美しい水車小屋の娘"
+              } 
+          },
+          'JIM' : {
+              "id": "1234-1",
+              "jsonrpc": "2.0",
+              "method": "jlp.jimservice.conversion",
+              "params": {
+                  "q": "きょうはよいてんきです。",
+                  "format": "hiragana",
+                  "mode": "kanakanji",
+                  "option": ["hiragana", "katakana", "alphanumeric", "half_katakana", "half_alphanumeric"],
+                  "dictionary": ["base", "name", "place", "zip", "symbol"],
+                  "results": 999
+              }
+          },
+          'Furigana' : {
+              "id": "1234-1",
+              "jsonrpc": "2.0",
+              "method": "jlp.furiganaservice.furigana",
+              "params": {
+                  "q": "漢字かな交じり文にふりがなを振ること。",
+                  "grade": 1
+              }
+          },
+          'Kousei' : {
+              "id": "1234-1",
+              "jsonrpc" : "2.0",
+              "method" : "jlp.kouseiservice.kousei",
+              "params" : {
+                  "q" : "セキュリティーで食べれるのか"
+              }
+          },
+          'DA' : {
+              "id": "1234-1",
+              "jsonrpc" : "2.0",
+              "method" : "jlp.daservice.parse",
+              "params" : {
+                  "q" : "青空にたくさんの気球が浮かんでいた"
+              }
+          },
+          'Keyphrase' : {
+              "id": "1234-1",
+              "jsonrpc" : "2.0",
+              "method" : "jlp.keyphraseservice.extract",
+              "params" : {
+                  "q" : "東京ミッドタウンから国立新美術館まで歩いて5分で着きます。"
+              }
+          },
+          'NLU' : {
+              "id": "1234-1",
+              "jsonrpc" : "2.0",
+              "method" : "jlp.nluservice.analyze",
+              "params" : {
+                  "q" : "新宿の天気"
+              }
+          },
+          'NER' : {
+              "id": "1234-1",
+              "jsonrpc" : "2.0",
+              "method" : "jlp.nerservice.extract",
+              "params" : {
+                  "q" : "Xデータ株式会社の加藤さんは、10時に東京駅に到着しました。"
+              }
+          }
+      };
+    </script>
+
+    <div style="text-align: right">
+      <!-- Begin Yahoo! JAPAN Web Services Attribution Snippet -->
+      <span style="margin:15px 15px 15px 15px"><a href="https://developer.yahoo.co.jp/sitemap/">Web Services by Yahoo! JAPAN</a></span>
+      <!-- End Yahoo! JAPAN Web Services Attribution Snippet -->
+    </div>
+  </body>
+</html>

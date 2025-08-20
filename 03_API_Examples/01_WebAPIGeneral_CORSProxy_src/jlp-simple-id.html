@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Y!API NLP demo forms - simple</title>
+    <style>
+      * { box-sizing: border-box; }
+      input, textarea { width: 100%; font-size: 1rem; }
+      textarea { height: 15em; margin-top: 0.5em; }
+      button { margin: 0.5em 0; font-size: 1rem; padding: 0.5em 1em; }
+    </style>
+    <script>
+      function method2url(method) {
+          let cs = method.split('.');
+          let m = cs[1].match(/^((.)(.+))service$/);
+          if (m[1].length <= 3) cs[1] = m[1].toUpperCase();
+          else cs[1] = m[2].toUpperCase() + m[3];
+          const version = cs[1].startsWith('NER') ? 1 : 2;
+          return `https://jlp.yahooapis.jp/${cs[1]}Service/V${version}/${cs[2]}`;
+      }
+      function analyze() {
+          const request = document.querySelector("#input-json").value;
+          const ClientID = document.querySelector("#client-id").value.trim();
+          if (!ClientID) {
+              alert("ClientID を入力してください。");
+              return;
+          }
+          const json = JSON.parse(request);
+          const end_point = method2url(json['method']);
+          const url = end_point + "?appid=" + encodeURIComponent(ClientID);
+          fetch(url, {
+              method: 'POST',
+              body: request,
+              mode: 'cors'
+          }).then(res => res.json()).then(obj =>
+              document.querySelector("#output-json").value = JSON.stringify(obj, null, 4)
+          ).catch(err => {
+              console.error(err);
+              alert("API 呼び出し中にエラーが発生しました: " + err.message);
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <input type="text" id="client-id" placeholder="ClientID を入力してください">
+    <textarea id="input-json" placeholder="入力 JSON"></textarea>
+    <button onclick="analyze()">解析する</button>
+    <textarea id="output-json" placeholder="解析結果 JSON"></textarea>
+    <div style="text-align: right">
+      <!-- Begin Yahoo! JAPAN Web Services Attribution Snippet -->
+      <span style="margin:15px 15px 15px 15px"><a href="https://developer.yahoo.co.jp/sitemap/">Web Services by Yahoo! JAPAN</a></span>
+      <!-- End Yahoo! JAPAN Web Services Attribution Snippet -->
+    </div>
+  </body>
+</html>

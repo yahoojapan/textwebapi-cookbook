@@ -57,7 +57,7 @@
 
 図: 動作確認用 HTML ページでの実行結果
 
-[![動作確認用 HTML ページ](images/01_WebAPIGeneral_CORSProxy_fig.png)](https://yto.github.io/yjdn/jlp-simple.html)
+[![動作確認用 HTML ページ](images/01_WebAPIGeneral_CORSProxy_fig.png)](https://yahoojapan.github.io/textwebapi-cookbook/03_API_Examples/01_WebAPIGeneral_CORSProxy_src/jlp-simple-id.html)
 
 コード中の関数 `method2url` は「[リクエスト URL とリクエストパラメータの "method" の相互変換](01_WebAPIGeneral_URLAndMethod.md)」で説明した方法で、入力されたリクエスト中の method をリクエスト URL に変換します。
 そのため、このデモでは形態素解析用のリクエストだけでなく、テキスト解析 Web API の他の機能（ルビ振り、校正支援、キーフレーズ抽出など）用のリクエストを入力しても対応します。
@@ -71,7 +71,7 @@
 また、本記事のコードを改良し、各機能ごとのサンプルリクエストをプルダウンで選択できるようにしたものを下記で利用できます。
 テキスト解析 Web API の動作確認にどうぞ。
 
-- [Y!API NLP demo forms](https://yto.github.io/yjdn/jlp.html)
+- [Y!API NLP demo forms](https://yahoojapan.github.io/textwebapi-cookbook/03_API_Examples/01_WebAPIGeneral_CORSProxy_src/jlp-id.html)
 
 ## 使用しているテキスト解析 Web API
 
