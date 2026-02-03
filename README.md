@@ -58,6 +58,14 @@ Yahoo!デベロッパーネットワークの「[テキスト解析 Web API](htt
   - [3.26　`固有表現抽出` テキストの固有表現マスキング](./03_API_Examples/09_NERService_Masking.md) 
   - [3.27　`固有表現抽出` プロフィールダイアグラムの作成](./03_API_Examples/09_NERService_ProfileDiagram.md)   
 
+## テキスト解析 Web API ガイドブック サンプルコード集・リンク集
+
+「テキスト解析 Web API ガイドブック」はイベント等で配布している本クックブックの冊子版です。  
+ガイドブック冊子の読者向けに提供しているサンプルコード集・リンク集は以下をご覧ください。
+- [テキスト解析 Web API ガイドブック サンプルコード集・リンク集](./Guidebook/README.md)
+  - [サンプルコード集](./Guidebook/SampleCode.md)
+  - [リンク集](./Guidebook/Link.md)
+
 ## Copyright / License
 
-Copyright (c) 2023 LY Corporation. See [LICENSE](./LICENSE) for further details.
+Copyright (c) LY Corporation. See [LICENSE](./LICENSE) for further details.
