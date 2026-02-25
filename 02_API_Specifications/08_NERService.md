@@ -160,7 +160,7 @@ https://jlp.yahooapis.jp/NERService/V1/extract \
   "params": {
     "q": "Xデータ株式会社の加藤さんは、10時に東京駅に到着しました。"
   }
-}' | jq '.result.entityList[] | select(.type == "LOCATION")'
+}' | jq -c '.result.entityList[] | select(.type == "LOCATION")'
 ```
 
 実行結果:
