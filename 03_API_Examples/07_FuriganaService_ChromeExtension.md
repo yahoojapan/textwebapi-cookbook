@@ -58,7 +58,7 @@ yahoo.co.jp ドメイン以外で動かしたい場合は `matches` を変更し
 ```javascript
 const APPID = 'あなたの Client ID（アプリケーション ID）';
 async function yapifuri(query) {
-    const url = "https://jlp.yahooapis.jp/FuriganaService/V2/furigana?appid=" + encodeURIComponent(APPID);
+    const url = "https://jlp.yahooapis.jp/jsonrpc?appid=" + encodeURIComponent(APPID);
     const res = await fetch(url, {
         method: 'POST',
         mode: 'cors',

@@ -30,7 +30,7 @@ from huggingface_hub import hf_hub_download
 # テキスト解析 Web API（キーフレーズ抽出）を叩いて、キーフレーズとその重要度を取得する関数
 def extract_keyphrases(query: str) -> list[dict]:
     client_id = "あなたの Client ID（アプリケーション ID）"
-    url = "https://jlp.yahooapis.jp/KeyphraseService/V2/extract"
+    url = "https://jlp.yahooapis.jp/jsonrpc"
 
     headers = {
         "Content-Type": "application/json",

@@ -9,7 +9,7 @@ for i in {1..8}; do
   n_furigana=`curl -s -X POST \
     -H "Content-Type: application/json" \
     -H "User-Agent: Yahoo AppID: $APPID" \
-    https://jlp.yahooapis.jp/FuriganaService/V2/furigana \
+    https://jlp.yahooapis.jp/jsonrpc \
     -d '{
       "id": "1", "jsonrpc": "2.0", "method": "jlp.furiganaservice.furigana",
       "params": {"q": "'$query'", "grade": '$i'}

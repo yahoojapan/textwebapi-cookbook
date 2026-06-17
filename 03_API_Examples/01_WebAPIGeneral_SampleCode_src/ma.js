@@ -1,5 +1,5 @@
 async function postRequest(query) {
-    const url = 'https://jlp.yahooapis.jp/MAService/V2/parse'
+    const url = 'https://jlp.yahooapis.jp/jsonrpc'
     const req = {
         id: '1',
         jsonrpc: '2.0',

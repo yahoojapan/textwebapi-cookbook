@@ -1,7 +1,7 @@
 <?php
 
 $appid = "あなたの Client ID（アプリケーション ID）";
-$ep = "https://jlp.yahooapis.jp/MAService/V2/parse";
+$ep = "https://jlp.yahooapis.jp/jsonrpc";
 
 $query = "今日は良い天気です。";
 

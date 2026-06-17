@@ -16,19 +16,10 @@
     </style>
     <script>
       const APPID = 'あなたの Client ID（アプリケーション ID）';
-      function method2url(method) {
-          let cs = method.split('.');
-          const m = cs[1].match(/^((.)(.+))service$/);
-          if (m[1].length <= 3) cs[1] = m[1].toUpperCase();
-          else cs[1] = m[2].toUpperCase() + m[3];
-          const version = cs[1].startsWith("NER") ? 1 :2;
-          return url = `https://jlp.yahooapis.jp/${cs[1]}Service/V${version}/${cs[2]}`
-      }
       function analyze() {
           const request = document.querySelector("#input-json").value;
-          const json = JSON.parse(request);
-          const end_point = method2url(json['method']);
-          const url = end_point + "?appid=" + encodeURIComponent(APPID);
+          JSON.parse(request);
+          const url = "https://jlp.yahooapis.jp/jsonrpc?appid=" + encodeURIComponent(APPID);
           fetch(url, {
               method: 'POST',
               body: request,
@@ -59,8 +50,7 @@
 
 [![動作確認用 HTML ページ](images/01_WebAPIGeneral_CORSProxy_fig.png)](https://yahoojapan.github.io/textwebapi-cookbook/03_API_Examples/01_WebAPIGeneral_CORSProxy_src/jlp-simple-id.html)
 
-コード中の関数 `method2url` は「[リクエスト URL とリクエストパラメータの "method" の相互変換](01_WebAPIGeneral_URLAndMethod.md)」で説明した方法で、入力されたリクエスト中の method をリクエスト URL に変換します。
-そのため、このデモでは形態素解析用のリクエストだけでなく、テキスト解析 Web API の他の機能（ルビ振り、校正支援、キーフレーズ抽出など）用のリクエストを入力しても対応します。
+今回は形態素解析を例に挙げましたが、テキスト解析 Web API の他の機能（ルビ振り、校正支援、キーフレーズ抽出など）用のリクエストを入力しても対応します。
 
 ## 関連情報
 

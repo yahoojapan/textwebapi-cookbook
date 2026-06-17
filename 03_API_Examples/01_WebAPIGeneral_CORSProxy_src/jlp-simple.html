@@ -8,19 +8,10 @@
     </style>
     <script>
       const APPID = 'あなたの Client ID（アプリケーション ID）';
-      function method2url(method) {
-          let cs = method.split('.');
-          const m = cs[1].match(/^((.)(.+))service$/);
-          if (m[1].length <= 3) cs[1] = m[1].toUpperCase();
-          else cs[1] = m[2].toUpperCase() + m[3];
-          const version = cs[1].startsWith("NER") ? 1 :2;
-          return url = `https://jlp.yahooapis.jp/${cs[1]}Service/V${version}/${cs[2]}`
-      }
       function analyze() {
           const request = document.querySelector("#input-json").value;
-          const json = JSON.parse(request);
-          const end_point = method2url(json['method']);
-          const url = end_point + "?appid=" + encodeURIComponent(APPID);
+          JSON.parse(request);
+          const url = "https://jlp.yahooapis.jp/jsonrpc?appid=" + encodeURIComponent(APPID);
           fetch(url, {
               method: 'POST',
               body: request,

@@ -76,7 +76,7 @@ class NLU {
  * テキスト解析 Web API の自然言語理解のRequestEntity
  */
 class NLURequestEntity {
-  private static baseUri = 'https://jlp.yahooapis.jp/NLUService/V2/analyze';
+  private static baseUri = 'https://jlp.yahooapis.jp/jsonrpc';
   private static headers = {
     'Content-Type': 'application/json',
     'User-Agent': `Yahoo AppID: ${APPID}`,

@@ -9,7 +9,7 @@ binmode STDIN, ":utf8";
 binmode STDOUT, ":utf8";
 
 my $appid = "あなたの Client ID（アプリケーション ID）";
-my $url = "https://jlp.yahooapis.jp/MAService/V2/parse";
+my $url = "https://jlp.yahooapis.jp/jsonrpc";
 my $ua = LWP::UserAgent->new;
 $ua->default_header('Content-Type' => 'application/json');
 $ua->default_header('User-Agent' => 'Yahoo AppID: '.$appid);

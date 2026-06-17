@@ -13,7 +13,7 @@
       const ClientID = 'あなたの Client ID（アプリケーション ID）';
 
       async function yapiner(query) {
-          const url = "https://jlp.yahooapis.jp/NERService/V1/extract?appid=" + encodeURIComponent(ClientID);
+          const url = "https://jlp.yahooapis.jp/jsonrpc?appid=" + encodeURIComponent(ClientID);
           const res = await fetch(url, {
               method: 'POST',
               mode: 'cors',

@@ -72,7 +72,7 @@
 curl -s -X POST \
 -H "Content-Type: application/json" \
 -H "User-Agent: Yahoo AppID: 'あなたの Client ID（アプリケーション ID）'" \
-https://jlp.yahooapis.jp/MAService/V2/parse \
+https://jlp.yahooapis.jp/jsonrpc \
 -d '[
   {
     "id": "1",

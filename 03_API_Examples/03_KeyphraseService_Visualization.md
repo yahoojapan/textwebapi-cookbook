@@ -19,7 +19,7 @@ from IPython.display import HTML, display
 # キーフレーズ抽出の結果からキーフレーズとその重要度を取得する関数
 def extract_keyphrases(query: str) -> list[dict]:
     client_id = "あなたの Client ID（アプリケーション ID）"
-    url = "https://jlp.yahooapis.jp/KeyphraseService/V2/extract"
+    url = "https://jlp.yahooapis.jp/jsonrpc"
 
     headers = {
         "Content-Type": "application/json",

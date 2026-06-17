@@ -28,7 +28,7 @@
 ### リクエスト URL
 
 ```
-https://jlp.yahooapis.jp/DAService/V2/parse
+https://jlp.yahooapis.jp/jsonrpc
 ```
 
 ### リクエストパラメータ
@@ -132,7 +132,7 @@ curl と jq を用いて「できること」を実行していきます。
 curl -s -X POST \
 -H "Content-Type: application/json" \
 -H "User-Agent: Yahoo AppID: 'あなたの Client ID（アプリケーション ID）'" \
-https://jlp.yahooapis.jp/DAService/V2/parse \
+https://jlp.yahooapis.jp/jsonrpc \
 -d '{
   "id": "1",
   "jsonrpc": "2.0",
@@ -162,7 +162,7 @@ https://jlp.yahooapis.jp/DAService/V2/parse \
 curl -s -X POST \
 -H "Content-Type: application/json" \
 -H "User-Agent: Yahoo AppID: 'あなたの Client ID（アプリケーション ID）'" \
-https://jlp.yahooapis.jp/DAService/V2/parse \
+https://jlp.yahooapis.jp/jsonrpc \
 -d '{
   "id": "1",
   "jsonrpc": "2.0",
@@ -187,7 +187,7 @@ https://jlp.yahooapis.jp/DAService/V2/parse \
 curl -s -X POST \
 -H "Content-Type: application/json" \
 -H "User-Agent: Yahoo AppID: 'あなたの Client ID（アプリケーション ID）'" \
-https://jlp.yahooapis.jp/DAService/V2/parse \
+https://jlp.yahooapis.jp/jsonrpc \
 -d '{
   "id": "1",
   "jsonrpc": "2.0",

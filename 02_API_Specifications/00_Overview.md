@@ -65,7 +65,7 @@ curl -s \
 -X POST \
 -H "Content-Type: application/json" \
 -H "User-Agent: Yahoo AppID: 'あなたの Client ID（アプリケーション ID）'" \
-https://jlp.yahooapis.jp/MAService/V2/parse \
+https://jlp.yahooapis.jp/jsonrpc \
 -d '{
   "id": "1234-1",
   "jsonrpc" : "2.0",
@@ -99,7 +99,7 @@ JSON 形式のリクエストパラメータは "-d" オプションで指定し
 ダウンロードの進捗やエラー出力を表示させないように "-s" オプションを指定します。
 
 Web API のリクエスト URL はオプションではなく引数として指定します。
-日本語形態素解析の場合は "https://jlp.yahooapis.jp/MAService/V2/parse" です。
+テキスト解析 Web API では "https://jlp.yahooapis.jp/jsonrpc" を指定します。
 
 ### jq
 
@@ -218,7 +218,7 @@ curl の説明で用いたサンプルの出力 JSON をファイル "samp.json"
 curl -s -X POST \
 -H "Content-Type: application/json" \
 -H "User-Agent: Yahoo AppID: 'あなたの Client ID（アプリケーション ID）'" \
-https://jlp.yahooapis.jp/MAService/V2/parse \
+https://jlp.yahooapis.jp/jsonrpc \
 -d '{
   "id": "1234-1",
   "jsonrpc": "2.0",

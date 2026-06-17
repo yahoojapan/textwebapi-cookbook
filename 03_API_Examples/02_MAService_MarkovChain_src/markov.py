@@ -4,7 +4,7 @@ from urllib import request
 import markovify
 
 APPID = "あなたの Client ID（アプリケーション ID）"
-URL = "https://jlp.yahooapis.jp/MAService/V2/parse"
+URL = "https://jlp.yahooapis.jp/jsonrpc"
 
 
 # テキスト解析 Web API の日本語形態素解析へリクエストする

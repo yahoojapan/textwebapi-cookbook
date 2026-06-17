@@ -31,7 +31,7 @@ import japanize_matplotlib
 
 ```python
 APPID = "あなたの Client ID（アプリケーション ID）"
-URL = "https://jlp.yahooapis.jp/MAService/V2/parse"
+URL = "https://jlp.yahooapis.jp/jsonrpc"
 headers = {
     "Content-Type": "application/json",
     "User-Agent": "Yahoo AppID: {}".format(APPID),

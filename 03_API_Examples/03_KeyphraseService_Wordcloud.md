@@ -15,7 +15,7 @@ Jupyter Lab / Jupyter Notebook / Google Colaboratory などで動かすことを
 import json
 from urllib import request
 APPID = "あなたの Client ID（アプリケーション ID）"
-URL = "https://jlp.yahooapis.jp/KeyphraseService/V2/extract"
+URL = "https://jlp.yahooapis.jp/jsonrpc"
 headers = {
     "Content-Type": "application/json",
     "User-Agent": "Yahoo AppID: {}".format(APPID),

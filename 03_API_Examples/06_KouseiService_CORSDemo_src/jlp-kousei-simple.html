@@ -16,7 +16,7 @@
       const APPID = 'あなたの Client ID（アプリケーション ID）';
 
       async function kousei_service(text) {
-          const url = 'https://jlp.yahooapis.jp/KouseiService/V2/kousei?appid=' + encodeURIComponent(APPID);
+          const url = 'https://jlp.yahooapis.jp/jsonrpc?appid=' + encodeURIComponent(APPID);
           return await fetch(url, {
               method: 'POST',
               body: JSON.stringify({

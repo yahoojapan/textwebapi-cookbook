@@ -10,14 +10,6 @@
       button { margin: 0.5em 0; font-size: 1rem; padding: 0.5em 1em; }
     </style>
     <script>
-      function method2url(method) {
-          let cs = method.split('.');
-          let m = cs[1].match(/^((.)(.+))service$/);
-          if (m[1].length <= 3) cs[1] = m[1].toUpperCase();
-          else cs[1] = m[2].toUpperCase() + m[3];
-          const version = cs[1].startsWith('NER') ? 1 : 2;
-          return `https://jlp.yahooapis.jp/${cs[1]}Service/V${version}/${cs[2]}`;
-      }
       function analyze() {
           const request = document.querySelector("#input-json").value;
           const ClientID = document.querySelector("#client-id").value.trim();
@@ -25,9 +17,8 @@
               alert("ClientID を入力してください。");
               return;
           }
-          const json = JSON.parse(request);
-          const end_point = method2url(json['method']);
-          const url = end_point + "?appid=" + encodeURIComponent(ClientID);
+          JSON.parse(request);
+          const url = "https://jlp.yahooapis.jp/jsonrpc?appid=" + encodeURIComponent(ClientID);
           fetch(url, {
               method: 'POST',
               body: request,

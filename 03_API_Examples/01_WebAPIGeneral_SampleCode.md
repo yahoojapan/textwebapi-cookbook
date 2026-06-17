@@ -20,7 +20,7 @@
 curl -s -X POST \
 -H "Content-Type: application/json" \
 -H "User-Agent: Yahoo AppID: あなたの Client ID（アプリケーション ID）" \
-https://jlp.yahooapis.jp/MAService/V2/parse \
+https://jlp.yahooapis.jp/jsonrpc \
 -d '{
   "id": "1",
   "jsonrpc": "2.0",
@@ -50,7 +50,7 @@ https://jlp.yahooapis.jp/MAService/V2/parse \
 import json
 from urllib import request
 APPID = "あなたの Client ID（アプリケーション ID）"
-URL = "https://jlp.yahooapis.jp/MAService/V2/parse"
+URL = "https://jlp.yahooapis.jp/jsonrpc"
 headers = {
     "Content-Type": "application/json",
     "User-Agent": "Yahoo AppID: {}".format(APPID),
@@ -89,7 +89,7 @@ Node.js v18 で動作します。
 
 ```javascript
 async function postRequest(query) {
-    const url = 'https://jlp.yahooapis.jp/MAService/V2/parse'
+    const url = 'https://jlp.yahooapis.jp/jsonrpc'
     const req = {
         id: '1',
         jsonrpc: '2.0',
@@ -133,7 +133,7 @@ HTML ファイル（ma.html など）として保存してウェブブラウザ�
   <head>
     <script>
       async function postRequest(query) {
-          const url = 'https://jlp.yahooapis.jp/MAService/V2/parse?appid=あなたの Client ID（アプリケーション ID）';
+          const url = 'https://jlp.yahooapis.jp/jsonrpc?appid=あなたの Client ID（アプリケーション ID）';
           const response = await fetch(url, {
               method: 'POST',
               mode: 'cors',
@@ -176,7 +176,7 @@ binmode STDIN, ":utf8";
 binmode STDOUT, ":utf8";
 
 my $appid = "あなたの Client ID（アプリケーション ID）";
-my $url = "https://jlp.yahooapis.jp/MAService/V2/parse";
+my $url = "https://jlp.yahooapis.jp/jsonrpc";
 my $ua = LWP::UserAgent->new;
 $ua->default_header('Content-Type' => 'application/json');
 $ua->default_header('User-Agent' => 'Yahoo AppID: '.$appid);
@@ -216,7 +216,7 @@ $ perl ma.pl
 <?php
 
 $appid = "あなたの Client ID（アプリケーション ID）";
-$ep = "https://jlp.yahooapis.jp/MAService/V2/parse";
+$ep = "https://jlp.yahooapis.jp/jsonrpc";
 
 $query = "今日は良い天気です。";
 

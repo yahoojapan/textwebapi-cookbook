@@ -1,30 +1,40 @@
-# リクエスト URL とリクエストパラメータの "method" の相互変換
+# 共通リクエスト URL と旧リクエスト URL、"method" の関係
 
-リクエストパラメータの "method" とリクエスト URL は、一対一で対応しており、一方がわかればもう一方は自動的に決まります。
+テキスト解析 Web API では、2026年6月16日にリクエスト URL の統合が案内されました
+（[テキスト解析 Web API リクエストURL統合（新共通URL提供）のお知らせ](https://developer.yahoo.co.jp/changelog/2026-06-16-jlp.html)）。
+現在は、各機能を共通のリクエスト URL から呼び出せます。
 
-テキスト解析 Web API の各機能のリクエスト URL に含まれるサービス名（例: MAService）のプレフィックス（例: MA）は、
-イニシャル語の場合は全て大文字（例: NLU）、
-単語の場合は先頭だけ大文字（例: Kousei）となっています。
-一方、 method ではすべて小文字です（例: nlu, kousei）。
+- 新共通リクエスト URL: `https://jlp.yahooapis.jp/jsonrpc`
 
-リクエスト URL と method の一覧を表に示します。
+今後はこの新共通リクエスト URL を使い、呼び出す API の切り替えはリクエスト JSON 内の `method` で指定する方式が基本になります。
+新しい実装では、共通リクエスト URL を前提にするのがよいでしょう。
 
-|                    | method                       | リクエスト URL（パス名のみ） |
-| ------------------ | ---------------------------- | ---------------------------- |
-| 日本語形態素解析   | jlp.maservice.parse          | MAService/V2/parse           |
-| かな漢字変換       | jlp.jimservice.conversion    | JIMService/V2/conversion     |
-| ルビ振り           | jlp.furiganaservice.furigana | FuriganaService/V2/furigana  |
-| 校正支援           | jlp.kouseiservice.kousei     | KouseiService/V2/kousei      |
-| 日本語係り受け解析 | jlp.daservice.parse          | DAService/V2/parse           |
-| キーフレーズ抽出   | jlp.keyphraseservice.extract | KeyphraseService/V2/extract  |
-| 自然言語理解       | jlp.nluservice.analyze       | NLUService/V2/analyze        |
-| 固有表現抽出       | jlp.nerservice.extract       | NERService/V1/extract        |
+## 旧リクエスト URL を使っている既存コードについて
 
-以下、正規表現による変換方法を説明します。
+今回の対象 API では、旧リクエスト URL も引き続き受け付けられます。
+ただし、本クックブックでは新共通リクエスト URL を基本形として扱います。
 
-## リクエスト URL を method に変換する方法
+また、今後新しく追加・公開される API は、新共通リクエスト URL のみで提供されます。
+そのため、旧リクエスト URLを使い続ける場合はご注意ください。
 
-URL からプロトコル名とドメイン名を除いたパス名を小文字に変換し、区切り文字を置き換えるだけです。
+## 旧リクエスト URL と method の相互変換
+
+旧リクエスト URL を使う既存コードや、過去の資料を読むときの参考として、旧リクエスト URL と `method` の対応も載せておきます。
+
+|                    | method                       | 旧リクエスト URL（パス名のみ） |
+| ------------------ | ---------------------------- | ------------------------------ |
+| 日本語形態素解析   | jlp.maservice.parse          | MAService/V2/parse             |
+| かな漢字変換       | jlp.jimservice.conversion    | JIMService/V2/conversion       |
+| ルビ振り           | jlp.furiganaservice.furigana | FuriganaService/V2/furigana    |
+| 校正支援           | jlp.kouseiservice.kousei     | KouseiService/V2/kousei        |
+| 日本語係り受け解析 | jlp.daservice.parse          | DAService/V2/parse             |
+| キーフレーズ抽出   | jlp.keyphraseservice.extract | KeyphraseService/V2/extract    |
+| 自然言語理解       | jlp.nluservice.analyze       | NLUService/V2/analyze          |
+| 固有表現抽出       | jlp.nerservice.extract       | NERService/V1/extract          |
+
+### 旧リクエスト URL を method に変換する方法
+
+旧リクエスト URL では、URL からプロトコル名とドメイン名を除いたパス名を小文字に変換し、区切り文字を置き換えるだけです。
 
 実装例（Perl）
 
@@ -46,9 +56,9 @@ console.log(method);
 // 実行結果: jlp.furiganaservice.furigana
 ```
 
-## method をリクエスト URL に変換する方法
+### method を旧リクエスト URL に変換する方法
 
-大まかなルールとして、サービス名のプレフィックスが3文字以内の場合は全て大文字、
+旧リクエスト URL では、サービス名のプレフィックスが3文字以内の場合は全て大文字、
 4文字以上の場合は先頭だけ大文字とします。
 また文字列 "service" の先頭も大文字にします。
 なお「固有表現抽出」だけ "V1" で他は "V2" になるので注意。
@@ -79,6 +89,10 @@ console.log(url);
 ```
 
 ## 著者
-
+(初版)  
 LINEヤフー研究所  
 山下 達雄（[@yto](https://x.com/yto)）
+
+(2026/06/16 更新)  
+LINEヤフー株式会社 言語処理エンジニア  
+牧野 恵

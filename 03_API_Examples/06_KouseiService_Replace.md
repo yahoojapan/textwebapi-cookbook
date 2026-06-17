@@ -25,7 +25,7 @@ const APPID = 'あなたの Client ID（アプリケーション ID）'
 
 // テキスト解析 Web API（校正支援）へのリクエスト用関数
 async function postRequest(query) {
-  const url = 'https://jlp.yahooapis.jp/KouseiService/V2/kousei'
+  const url = 'https://jlp.yahooapis.jp/jsonrpc'
   const req = {
     id: '1',
     jsonrpc: '2.0', 

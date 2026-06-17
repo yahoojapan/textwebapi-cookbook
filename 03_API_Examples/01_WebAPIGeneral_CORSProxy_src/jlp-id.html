@@ -46,25 +46,12 @@
     </div>
 
     <script>
-      let end_point = '';
-
       document.getElementById('sel-sample').addEventListener('change', e => {
           if (e.currentTarget.value) {
               document.querySelector("#input-json").value = JSON.stringify(sample_req[e.currentTarget.value], null, 4);
-              const url = method2url(sample_req[e.currentTarget.value]['method']);
-              end_point = url;
           }
       });
       document.getElementById('prity').addEventListener('change', () => dodo());
-
-      function method2url(method) {
-          let cs = method.split('.');
-          let m = cs[1].match(/^((.)(.+))service$/);
-          if (m[1].length <= 3) cs[1] = m[1].toUpperCase();
-          else cs[1] = m[2].toUpperCase() + m[3];
-          const version = cs[1].startsWith('NER') ? 1 : 2;
-          return `https://jlp.yahooapis.jp/${cs[1]}Service/V${version}/${cs[2]}`;
-      }
 
       async function post_jlp(url, request) {
           return await fetch(url, {
@@ -77,8 +64,7 @@
       async function dodo() {
           const req = document.querySelector("#input-json").value;
           try {
-              let json = JSON.parse(req);
-              end_point = method2url(json['method']);
+              JSON.parse(req);
           } catch(e) {
               alert("JSON が不正です: " + e.message);
               return;
@@ -90,7 +76,7 @@
               return;
           }
 
-          const url = end_point + "?appid=" + encodeURIComponent(ClientID);
+          const url = "https://jlp.yahooapis.jp/jsonrpc?appid=" + encodeURIComponent(ClientID);
           console.log(url);
 
           const obj = await post_jlp(url, req);

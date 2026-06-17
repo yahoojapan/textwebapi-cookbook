@@ -93,7 +93,7 @@ def sentence_to_tokens(query):
     import json
     from urllib import request
     APPID = "あなたの Client ID（アプリケーション ID）"
-    URL = "https://jlp.yahooapis.jp/MAService/V2/parse"
+    URL = "https://jlp.yahooapis.jp/jsonrpc"
     params = json.dumps({
         "id": "1234-1",
         "jsonrpc": "2.0",

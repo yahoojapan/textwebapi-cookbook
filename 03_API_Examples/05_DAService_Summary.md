@@ -35,7 +35,7 @@ curl -s -X POST \
     "q": "うちの庭には大きな鶏がいます"
   }
 }' \
-https://jlp.yahooapis.jp/DAService/V2/parse | \
+https://jlp.yahooapis.jp/jsonrpc | \
 jq -cr '.result.chunks[].root_id = (.result.chunks[] | (select(.head == -1) | .id)) |
  [ .result.chunks[] | select(.head == -1 or .head == .root_id) | .tokens[][0] ] | join("")'
 ```

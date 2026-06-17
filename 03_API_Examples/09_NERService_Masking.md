@@ -33,7 +33,7 @@ import requests
 import json
 
 APPID = "あなたの Client ID（アプリケーション ID）"
-URL = "https://jlp.yahooapis.jp/NERService/V1/extract"
+URL = "https://jlp.yahooapis.jp/jsonrpc"
 
 def get_entities(text):
     # APIリクエストのペイロード

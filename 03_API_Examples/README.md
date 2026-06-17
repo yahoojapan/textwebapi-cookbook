@@ -4,7 +4,7 @@
 
 - [3.1 　第3章の概要](./00_Overview.md)
 - [3.2 　`テキスト解析 Web API 全般` 各プログラミング言語でのサンプルコード](./01_WebAPIGeneral_SampleCode.md)
-- [3.3 　`テキスト解析 Web API 全般` リクエスト URL とリクエストパラメータの "method" の相互変換](./01_WebAPIGeneral_URLAndMethod.md)
+- [3.3 　`テキスト解析 Web API 全般` 共通リクエスト URL と旧リクエスト URL、"method" の関係](./01_WebAPIGeneral_URLAndMethod.md)
 - [3.4 　`テキスト解析 Web API 全般` バッチリクエストでクライアント側の HTTP 接続回数を減らす方法](./01_WebAPIGeneral_BatchRequest.md)
 - [3.5 　`テキスト解析 Web API 全般` テキスト解析 Web API をウェブページから直接使う方法](./01_WebAPIGeneral_CORSProxy.md)
 - [3.6 　`日本語形態素解析` 形態素や品詞の頻度を集計してグラフ化する](./02_MAService_FrequencyCount.md)
